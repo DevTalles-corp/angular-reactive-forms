@@ -11,19 +11,16 @@
           <input
             type="text"
             class="form-control"
-            placeholder="Nombre del usuario"
+            placeholder="Nombre y apellido"
             formControlName="name"
           />
 
           @if ( formUtils.isValidField(myForm, 'name')) {
           <span class="form-text text-danger">
-            {{ formUtils.getFieldError(myForm, "name") }}
+            El campo debe de tener nombre y apellido
+            <!-- {{ formUtils.getFieldError(myForm, "name") }} -->
           </span>
           }
-
-          <!-- <span class="form-text text-danger">
-            Debe de ser en formato de nombre y apellido
-          </span> -->
         </div>
       </div>
 
@@ -39,6 +36,7 @@
           />
           @if ( formUtils.isValidField(myForm, 'email')) {
           <span class="form-text text-danger">
+            <!-- El valor ingresado no parece un correo electrónico -->
             {{ formUtils.getFieldError(myForm, "email") }}
           </span>
           }
@@ -113,6 +111,10 @@
 
       <div class="row">
         <div class="col">
+          @if( myForm.errors && myForm.touched ) {
+          <span class="text-danger"> Las contraseñas no son iguales </span>
+          }
+
           <button class="btn btn-primary float-end" type="submit">Crear</button>
         </div>
       </div>
